@@ -20,19 +20,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: step1 - Checkout main branch from github
     - uses: actions/checkout@v3
-    - name: Set up JDK 11
+    
+    
+    - name: Step2 - Set up JDK 11
       uses: actions/setup-java@v3
       with:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+        
+    - name: step3 - github action to build Maven project
       run: mvn -B package --file pom.xml
-    - name: Compile Java file
-      run: javac mynewproject/src/main/java/com/thbs/App.java
+      
+    - name: step4 - list the current directory
+      run: ls -a
 
-    - name: Execute Java file
-      run: java mynewproject/src/main/java/com/thbs/App.java
+    - name: step5 - my target file
+      run: 
+        cd target
+        ls -a
 
 
